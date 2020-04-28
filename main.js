@@ -1,10 +1,24 @@
 let Phrase = require("dfolkins-palindrome");
 
-let string = prompt("Please enter a sting for palindrome testing");
-let phrase = new Phrase(string);
+function palindromeTester(event) {
+  event.preventDefault();
+  
+  let phrase = new Phrase(event.target.phrase.value);
+  let palindromeResult = document.querySelector("#palindromeResult");
 
-if (phrase.palindrome()) {
-  alert(`"${phrase.content}" is a fuckin' palindrome!!!`);
-} else {
-  alert(`"${phrase.content}" is NOT a fuckin' palindrome!!! :(`);
+  if (phrase.palindrome()) {
+    palindromeResult.innerHTML = `"${phrase.content}" is a fuckin' palindrome!!!`;
+  } else {
+    palindromeResult.innerHTML = `"${phrase.content}" is NOT a fuckin' palindrome!!! :(`;
+  }  
 }
+
+document.addEventListener("DOMContentLoaded", function(){
+  let button = document.querySelector("#palindromeTester");
+  button.addEventListener("submit", function() {
+    palindromeTester(event);
+  });
+});
+
+
+

@@ -21,6 +21,10 @@ function Phrase(content) {
 
   // Returns true for a plaindrome, false otherwise
   this.palindrome = function palindrome() {
-    return this.proccessedContent() === (this.proccessedContent().reverse());
+    if (this.letters()) {
+      return this.proccessedContent() === (this.proccessedContent().reverse());
+    } else {
+      return false
+    }  
   }
 }
